@@ -15,6 +15,8 @@ import com.cheneCigogne.demo.service.DishService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 
@@ -46,4 +48,10 @@ public class DishController {
     return ResponseEntity.ok(allDishesDto);
   }
   
+  //update dish
+  @PutMapping("{id}")
+  public ResponseEntity<DishDto> updateDish(@PathVariable("id") Long dishId, @RequestBody DishDto updatedDishDto) {
+    DishDto dishToUpdate = dishService.updateDishFromDto(dishId, updatedDishDto);
+    return ResponseEntity.ok(dishToUpdate);
+  }
 }

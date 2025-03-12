@@ -38,6 +38,19 @@ public class DishServiceImplement implements DishService {
     return foundDishes.stream()
       .map((dish) -> DishMapper.mapToDishDto(dish))
       .collect(Collectors.toList());
+  }
+
+  @Override
+  public DishDto updateDishFromDto(Long dishId, DishDto updatedDish) {
+    Dish dishToUpdate = dishRepository.findById(dishId) 
+      .orElseThrow(() -> new NotFoundException("Impossible de modifier un plat inexistant"));
+    
+      dishToUpdate.setName(updatedDish.getName());
+      dishToUpdate.setDescription(updatedDish.getDescription());
+      dishToUpdate.setPrice(updatedDish.getPrice());
+
+      Dish updatedDishObject = dishRepository.save(dishToUpdate);
+      return DishMapper.mapToDishDto(updatedDishObject);
   };
 
   

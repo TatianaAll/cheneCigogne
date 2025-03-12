@@ -10,4 +10,6 @@ public interface DishService {
   DishDto getDishDtoById(Long DishId);
 
   List<DishDto> getAllDishesDto();
+
+  DishDto updateDishFromDto(Long dishId, DishDto updatedDish);
 }
