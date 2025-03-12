@@ -18,32 +18,32 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "dishes")
 public class Dish {
-    public Dish(Long id, String name, String description, float price) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.available = false;
-    };
+  public Dish(Long id, String name, String description, float price) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.price = price;
+    this.available = false;
+  };
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+  @Column(name = "name", nullable = false)
+  private String name;
 
-    private String description;
+  private String description;
 
-    @Column(name = "price")
-    private float price;
+  @Column(name = "price")
+  private float price;
 
-    private String image;
+  private String image;
 
-    @Column(name = "available")
-    private Boolean available;
+  @Column(name = "available")
+  private Boolean available;
 
-    public boolean getAvailable() {
-        return BooleanUtils.isTrue(this.available);
-    }
+  public boolean getAvailable() {
+    return BooleanUtils.isTrue(this.available);
+  }
 }

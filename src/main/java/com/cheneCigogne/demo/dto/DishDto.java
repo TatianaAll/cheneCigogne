@@ -12,8 +12,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class DishDto {
-    private Long id;
-    private String name;
-    private String description;
-    private Float price;
+  private Long id;
+  private String name;
+  private String description;
+  private Float price;
 }

@@ -7,12 +7,11 @@ public class DishMapper {
 
   public static DishDto mapToDishDto(Dish dish) {
     return DishDto.builder()
-      .id(dish.getId())
-      .name(dish.getName())
-      .description(dish
-      .getDescription())
-      .price(dish.getPrice())
-      .build();
+        .id(dish.getId())
+        .name(dish.getName())
+        .description(dish.getDescription())
+        .price(dish.getPrice())
+        .build();
   }
 
   public static Dish mapToDish(DishDto dishDto) {
@@ -20,8 +19,7 @@ public class DishMapper {
         dishDto.getId(),
         dishDto.getName(),
         dishDto.getDescription(),
-        dishDto.getPrice()
-        );
+        dishDto.getPrice());
   }
 
 }

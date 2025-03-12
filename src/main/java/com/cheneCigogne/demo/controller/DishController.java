@@ -17,12 +17,12 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/api/dishes")
 public class DishController {
 
-    private DishService dishService;
+  private DishService dishService;
 
-    //Build REST API for dish addition
-    @PostMapping
-    public ResponseEntity<DishDto> createDishDto(@RequestBody DishDto dishDto) {
-        DishDto savedDish = dishService.createDishFromDto(dishDto);
-        return new ResponseEntity<>(savedDish, HttpStatus.CREATED);
-    }
+  // Build REST API for dish addition
+  @PostMapping
+  public ResponseEntity<DishDto> createDishDto(@RequestBody DishDto dishDto) {
+    DishDto savedDish = dishService.createDishFromDto(dishDto);
+    return new ResponseEntity<>(savedDish, HttpStatus.CREATED);
+  }
 }

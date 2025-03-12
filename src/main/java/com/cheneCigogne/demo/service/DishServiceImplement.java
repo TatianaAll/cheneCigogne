@@ -13,20 +13,19 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class DishServiceImplement implements DishService {
-    private DishRepository dishRepository;
+  private DishRepository dishRepository;
 
-    @Override
-    public DishDto createDishFromDto(DishDto dishDto) {
-        Dish dish = DishMapper.mapToDish(dishDto);
-        Dish savedDish = dishRepository.save(dish);
-        return DishMapper.mapToDishDto(savedDish);
-    }
+  @Override
+  public DishDto createDishFromDto(DishDto dishDto) {
+    Dish dish = DishMapper.mapToDish(dishDto);
+    Dish savedDish = dishRepository.save(dish);
+    return DishMapper.mapToDishDto(savedDish);
+  }
 
-    @Override
-    public DishDto getDishDtoById(Long DishId) {
-        Dish foundDish = dishRepository.findById(DishId)
-            .orElseThrow(() -> 
-                new NotFoundException("Le plat recherché n'existe pas"));
-        return DishMapper.mapToDishDto(foundDish);
-    };
+  @Override
+  public DishDto getDishDtoById(Long DishId) {
+    Dish foundDish = dishRepository.findById(DishId)
+        .orElseThrow(() -> new NotFoundException("Le plat recherché n'existe pas"));
+    return DishMapper.mapToDishDto(foundDish);
+  };
 }
