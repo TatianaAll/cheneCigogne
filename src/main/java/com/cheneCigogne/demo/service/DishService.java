@@ -1,5 +1,9 @@
 package com.cheneCigogne.demo.service;
 
-public interface DishService {
+import com.cheneCigogne.demo.dto.DishDto;
 
+public interface DishService {
+    DishDto createDishFromDto(DishDto dishDto);
+
+    DishDto getDishDtoById(Long DishId);
 }
