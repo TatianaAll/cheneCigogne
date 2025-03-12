@@ -1,5 +1,7 @@
 package com.cheneCigogne.demo.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +15,7 @@ import com.cheneCigogne.demo.service.DishService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 @AllArgsConstructor
@@ -34,6 +37,13 @@ public class DishController {
   public ResponseEntity<DishDto> getDishDtoById(@PathVariable("id") Long dishId) {
     DishDto dishFound = dishService.getDishDtoById(dishId);
       return ResponseEntity.ok(dishFound);
+  }
+
+  //dish all research
+  @GetMapping
+  public ResponseEntity<List<DishDto>> getAllDishesDto() {
+    var allDishesDto = dishService.getAllDishesDto();
+    return ResponseEntity.ok(allDishesDto);
   }
   
 }

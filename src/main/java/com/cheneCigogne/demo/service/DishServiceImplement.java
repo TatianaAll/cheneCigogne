@@ -1,5 +1,8 @@
 package com.cheneCigogne.demo.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.cheneCigogne.demo.dto.DishDto;
@@ -27,5 +30,15 @@ public class DishServiceImplement implements DishService {
     Dish foundDish = dishRepository.findById(DishId)
         .orElseThrow(() -> new NotFoundException("Le plat recherché n'existe pas"));
     return DishMapper.mapToDishDto(foundDish);
+  }
+
+  @Override
+  public List<DishDto> getAllDishesDto() {
+    List<Dish> foundDishes = dishRepository.findAll();
+    return foundDishes.stream()
+      .map((dish) -> DishMapper.mapToDishDto(dish))
+      .collect(Collectors.toList());
   };
+
+  
 }
