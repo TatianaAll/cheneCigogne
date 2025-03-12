@@ -11,6 +11,9 @@ import com.cheneCigogne.demo.dto.DishDto;
 import com.cheneCigogne.demo.service.DishService;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @AllArgsConstructor
 @RestController
@@ -25,4 +28,12 @@ public class DishController {
     DishDto savedDish = dishService.createDishFromDto(dishDto);
     return new ResponseEntity<>(savedDish, HttpStatus.CREATED);
   }
+
+  //Dish research by id
+  @GetMapping("{id}")
+  public ResponseEntity<DishDto> getDishDtoById(@PathVariable("id") Long dishId) {
+    DishDto dishFound = dishService.getDishDtoById(dishId);
+      return ResponseEntity.ok(dishFound);
+  }
+  
 }
