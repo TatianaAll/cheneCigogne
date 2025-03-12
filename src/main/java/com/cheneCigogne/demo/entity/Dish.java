@@ -1,5 +1,7 @@
 package com.cheneCigogne.demo.entity;
 
+import org.apache.commons.lang3.BooleanUtils;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,17 +9,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "dishes")
 public class Dish {
+    public Dish(Long id, String name, String description, float price) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.available = false;
+    };
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,11 +35,15 @@ public class Dish {
 
     private String description;
 
-    @Column(name = "price", nullable = false)
-    private Float price;
+    @Column(name = "price")
+    private float price;
 
     private String image;
 
-    @Column(name = "available", nullable =  false)
+    @Column(name = "available")
     private Boolean available;
+
+    public boolean getAvailable() {
+        return BooleanUtils.isTrue(this.available);
+    }
 }

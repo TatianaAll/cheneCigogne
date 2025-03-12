@@ -5,24 +5,23 @@ import com.cheneCigogne.demo.entity.Dish;
 
 public class DishMapper {
 
-    public static DishDto mapToDishDto(Dish dish) {
-        return new DishDto(
-            dish.getId(),
-            dish.getName(),
-            dish.getDescription(),
-            dish.getPrice()
-        );
-    }
+  public static DishDto mapToDishDto(Dish dish) {
+    return DishDto.builder()
+      .id(dish.getId())
+      .name(dish.getName())
+      .description(dish
+      .getDescription())
+      .price(dish.getPrice())
+      .build();
+  }
 
-    public static Dish mapToDish(DishDto dishDto) {
-        return new Dish(
-            dishDto.getId(),
-            dishDto.getName(),
-            dishDto.getDescription(),
-            dishDto.getPrice(), 
-            "null",
-            false
+  public static Dish mapToDish(DishDto dishDto) {
+    return new Dish(
+        dishDto.getId(),
+        dishDto.getName(),
+        dishDto.getDescription(),
+        dishDto.getPrice()
         );
-    }
+  }
 
 }
