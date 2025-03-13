@@ -26,8 +26,8 @@ public class DishServiceImplement implements DishService {
   }
 
   @Override
-  public DishDto getDishDtoById(Long DishId) {
-    Dish foundDish = dishRepository.findById(DishId)
+  public DishDto getDishDtoById(Long dishId) {
+    Dish foundDish = dishRepository.findById(dishId)
         .orElseThrow(() -> new NotFoundException("Le plat recherché n'existe pas"));
     return DishMapper.mapToDishDto(foundDish);
   }
@@ -51,6 +51,14 @@ public class DishServiceImplement implements DishService {
 
       Dish updatedDishObject = dishRepository.save(dishToUpdate);
       return DishMapper.mapToDishDto(updatedDishObject);
+  }
+
+  @Override
+  public void deleteDish(Long dishId) {
+    Dish dishToDelete = dishRepository.findById(dishId)
+      .orElseThrow(() -> new NotFoundException("le plat à supprimé n'existe pas"));
+
+      dishRepository.delete(dishToDelete);
   };
 
   

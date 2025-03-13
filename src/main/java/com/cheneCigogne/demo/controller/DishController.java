@@ -13,11 +13,11 @@ import com.cheneCigogne.demo.dto.DishDto;
 import com.cheneCigogne.demo.service.DishService;
 
 import lombok.AllArgsConstructor;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
-
-
 
 
 @AllArgsConstructor
@@ -53,5 +53,12 @@ public class DishController {
   public ResponseEntity<DishDto> updateDish(@PathVariable("id") Long dishId, @RequestBody DishDto updatedDishDto) {
     DishDto dishToUpdate = dishService.updateDishFromDto(dishId, updatedDishDto);
     return ResponseEntity.ok(dishToUpdate);
+  }
+
+  //delete dish
+  @DeleteMapping("{id}")
+  public ResponseEntity<String> deleteDish(@PathVariable("id") Long dishId) {
+    dishService.deleteDish(dishId);
+    return ResponseEntity.ok("Plat supprimé avec succès"); 
   }
 }
