@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,7 +45,12 @@ public class Dish {
   @Column(name = "available")
   private Boolean available;
 
+  @ManyToOne
+  @JoinColumn(name = "category_id", nullable = true)
+  private Category category;
+
   public boolean getAvailable() {
     return BooleanUtils.isTrue(this.available);
   }
+
 }
