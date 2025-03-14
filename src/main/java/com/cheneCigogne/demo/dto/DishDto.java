@@ -1,7 +1,5 @@
 package com.cheneCigogne.demo.dto;
 
-import com.cheneCigogne.demo.entity.Category;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,5 +16,4 @@ public class DishDto {
   private String name;
   private String description;
   private Float price;
-  private Category category;
 }
