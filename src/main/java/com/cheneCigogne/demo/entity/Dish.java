@@ -20,11 +20,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "dishes")
 public class Dish {
-  public Dish(Long id, String name, String description, float price) {
+  public Dish(Long id, String name, String description, float price, Category category) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.price = price;
+    this.category = category;
     this.available = false;
   };
 

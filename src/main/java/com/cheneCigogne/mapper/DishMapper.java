@@ -11,6 +11,7 @@ public class DishMapper {
         .name(dish.getName())
         .description(dish.getDescription())
         .price(dish.getPrice())
+        .category(dish.getCategory())
         .build();
   }
 
@@ -19,7 +20,8 @@ public class DishMapper {
         dishDto.getId(),
         dishDto.getName(),
         dishDto.getDescription(),
-        dishDto.getPrice());
+        dishDto.getPrice(),
+        dishDto.getCategory());
   }
 
 }
