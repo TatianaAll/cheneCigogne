@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cheneCigogne.demo.dto.RestaurantTableDto;
-import com.cheneCigogne.demo.service.serviceInterface.RestaurantTableService;
+import com.cheneCigogne.demo.service.serviceInterface.TableService;
 
 import lombok.AllArgsConstructor;
 
@@ -22,27 +22,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 @AllArgsConstructor
 @RequestMapping("/table")
 public class RestaurantTableController {
-  private RestaurantTableService tableService;
 
-  @PostMapping("create")
+  private TableService tableService;
+
+  @PostMapping("/create")
   public ResponseEntity<RestaurantTableDto> createNewTable(@RequestBody RestaurantTableDto newTable) {
       tableService.createTable(newTable);
       return new ResponseEntity<>(newTable, HttpStatus.CREATED);
   }
 
-  @GetMapping("{id}")
+  @GetMapping("/{id}")
   public ResponseEntity<RestaurantTableDto> getTableById(@PathVariable("id") Long tableId) {
     RestaurantTableDto foundTable = tableService.getTable(tableId);
     return ResponseEntity.ok(foundTable);
   }
   
-  @GetMapping("all")
+  @GetMapping("/all")
   public ResponseEntity<List<RestaurantTableDto>> getAllTables() {
     List<RestaurantTableDto> allTables = tableService.getAllTables();
     return ResponseEntity.ok(allTables);
   }
 
-  @DeleteMapping("{id}")
+  @DeleteMapping("/{id}/delete")
   public ResponseEntity<String> deleteTable(@PathVariable("id") Long tableId) {
     tableService.deleteTable(tableId);
     return ResponseEntity.ok("La table a été supprimée avec succès !");

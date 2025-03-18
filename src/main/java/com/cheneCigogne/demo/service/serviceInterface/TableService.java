@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.cheneCigogne.demo.dto.RestaurantTableDto;
 
-public interface RestaurantTableService {
+public interface TableService {
   RestaurantTableDto createTable(RestaurantTableDto tableDto);
 
   RestaurantTableDto getTable(Long tableId);

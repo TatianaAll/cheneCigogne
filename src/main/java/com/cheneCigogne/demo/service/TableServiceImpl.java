@@ -3,14 +3,20 @@ package com.cheneCigogne.demo.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.cheneCigogne.demo.dto.RestaurantTableDto;
 import com.cheneCigogne.demo.entity.RestaurantTable;
 import com.cheneCigogne.demo.exception.NotFoundException;
 import com.cheneCigogne.demo.repository.RestaurantTableRepository;
-import com.cheneCigogne.demo.service.serviceInterface.RestaurantTableService;
+import com.cheneCigogne.demo.service.serviceInterface.TableService;
 import com.cheneCigogne.mapper.TableMapper;
 
-public class TableServiceImpl implements RestaurantTableService {
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class TableServiceImpl implements TableService {
 
   private RestaurantTableRepository tableRepository;
 
