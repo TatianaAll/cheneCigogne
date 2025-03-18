@@ -9,6 +9,7 @@ import com.cheneCigogne.demo.dto.DishDto;
 import com.cheneCigogne.demo.entity.Dish;
 import com.cheneCigogne.demo.exception.NotFoundException;
 import com.cheneCigogne.demo.repository.DishRepository;
+import com.cheneCigogne.demo.service.serviceInterface.DishService;
 import com.cheneCigogne.mapper.DishMapper;
 
 import lombok.AllArgsConstructor;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cheneCigogne.demo.dto.DishDto;
-import com.cheneCigogne.demo.service.DishService;
+import com.cheneCigogne.demo.service.serviceInterface.DishService;
 
 import lombok.AllArgsConstructor;
 
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/dishes")
+@RequestMapping("/dishes")
 public class DishController {
 
   private DishService dishService;

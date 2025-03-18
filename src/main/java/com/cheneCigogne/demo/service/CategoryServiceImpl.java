@@ -11,6 +11,7 @@ import com.cheneCigogne.demo.entity.Category;
 import com.cheneCigogne.demo.entity.Dish;
 import com.cheneCigogne.demo.exception.NotFoundException;
 import com.cheneCigogne.demo.repository.CategoryRepository;
+import com.cheneCigogne.demo.service.serviceInterface.CategoryService;
 import com.cheneCigogne.mapper.CategoryMapper;
 import com.cheneCigogne.mapper.DishMapper;
 

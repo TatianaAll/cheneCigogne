@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cheneCigogne.demo.dto.CategoryDto;
 import com.cheneCigogne.demo.dto.DishDto;
-import com.cheneCigogne.demo.service.CategoryService;
+import com.cheneCigogne.demo.service.serviceInterface.CategoryService;
 
 import lombok.AllArgsConstructor;
 
