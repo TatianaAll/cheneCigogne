@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cheneCigogne.demo.dto.CategoryDto;
-import com.cheneCigogne.demo.dto.DishDto;
+import com.cheneCigogne.demo.entity.Dish;
 import com.cheneCigogne.demo.service.serviceInterface.CategoryService;
 
 import lombok.AllArgsConstructor;
@@ -39,8 +39,8 @@ public class CategoryController {
   }
   
   @GetMapping("{id}/dishes")
-  public ResponseEntity<List<DishDto>> getAllDishesInOneCategory(@PathVariable ("id") Long categoryId) {
-    List<DishDto> dishesInFoundCategory = categoryService.getAllDishesInOneCategory(categoryId);
+  public ResponseEntity<List<Dish>> getAllDishesInOneCategory(@PathVariable ("id") Long categoryId) {
+    List<Dish> dishesInFoundCategory = categoryService.getAllDishesInOneCategory(categoryId);
     return ResponseEntity.ok(dishesInFoundCategory);
   }
 

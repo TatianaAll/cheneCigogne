@@ -3,14 +3,14 @@ package com.cheneCigogne.demo.service.serviceInterface;
 import java.util.List;
 
 import com.cheneCigogne.demo.dto.CategoryDto;
-import com.cheneCigogne.demo.dto.DishDto;
+import com.cheneCigogne.demo.entity.Dish;
 
 public interface CategoryService {
   CategoryDto createCategory(CategoryDto newCategory);
 
   CategoryDto getCategory(Long categoryId);
 
-  List<DishDto> getAllDishesInOneCategory(Long categoryId);
+  List<Dish> getAllDishesInOneCategory(Long categoryId);
 
   List<CategoryDto> getAllCategories();
 
