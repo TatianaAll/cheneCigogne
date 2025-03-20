@@ -6,14 +6,12 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.cheneCigogne.demo.dto.CategoryDto;
-import com.cheneCigogne.demo.dto.DishDto;
 import com.cheneCigogne.demo.entity.Category;
 import com.cheneCigogne.demo.entity.Dish;
 import com.cheneCigogne.demo.exception.NotFoundException;
 import com.cheneCigogne.demo.repository.CategoryRepository;
 import com.cheneCigogne.demo.service.serviceInterface.CategoryService;
 import com.cheneCigogne.mapper.CategoryMapper;
-import com.cheneCigogne.mapper.DishMapper;
 
 import lombok.AllArgsConstructor;
 
@@ -37,14 +35,11 @@ public class CategoryServiceImpl implements CategoryService{
   }
 
   @Override
-  public List<DishDto> getAllDishesInOneCategory(Long categoryId) {
+  public List<Dish> getAllDishesInOneCategory(Long categoryId) {
    Category foundCategory = categoryRepository.findById(categoryId)
     .orElseThrow(()-> new NotFoundException("la categorie demandée n'existe pas"));
     List<Dish> dishesInCategory = foundCategory.getDishes();
-    List<DishDto> foundDishes = dishesInCategory.stream()
-      .map((dish) -> DishMapper.mapToDishDto(dish))
-      .collect(Collectors.toList());
-    return foundDishes;
+    return dishesInCategory;
   }
 
   @Override
