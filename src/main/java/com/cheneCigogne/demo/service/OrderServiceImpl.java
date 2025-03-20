@@ -1,10 +1,16 @@
 package com.cheneCigogne.demo.service;
 
+import org.springframework.stereotype.Service;
+
 import com.cheneCigogne.demo.entity.Order;
 import com.cheneCigogne.demo.exception.NotFoundException;
 import com.cheneCigogne.demo.repository.OrderRepository;
 import com.cheneCigogne.demo.service.serviceInterface.OrderService;
 
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
 public class OrderServiceImpl implements OrderService {
   private OrderRepository orderRepository;
 
