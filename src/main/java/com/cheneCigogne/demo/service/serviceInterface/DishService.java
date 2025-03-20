@@ -2,16 +2,16 @@ package com.cheneCigogne.demo.service.serviceInterface;
 
 import java.util.List;
 
-import com.cheneCigogne.demo.dto.DishDto;
+import com.cheneCigogne.demo.entity.Dish;
 
 public interface DishService {
-  DishDto createDishFromDto(DishDto dishDto);
+  Dish createDish(Dish newDish);
 
-  DishDto getDishDtoById(Long dishId);
+  Dish getDishById(Long dishId);
 
-  List<DishDto> getAllDishesDto();
+  List<Dish> getAllDishes();
 
-  DishDto updateDishFromDto(Long dishId, DishDto updatedDish);
+  Dish updateDish(Long dishId, Dish updatedDish);
 
   void deleteDish(Long dishId);
 }

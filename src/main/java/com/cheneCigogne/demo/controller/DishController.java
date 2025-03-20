@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cheneCigogne.demo.dto.DishDto;
+import com.cheneCigogne.demo.entity.Dish;
 import com.cheneCigogne.demo.service.serviceInterface.DishService;
 
 import lombok.AllArgsConstructor;
@@ -28,35 +28,35 @@ public class DishController {
   private DishService dishService;
 
   // Build REST API for dish addition
-  @PostMapping
-  public ResponseEntity<DishDto> createDishDto(@RequestBody DishDto dishDto) {
-    DishDto savedDish = dishService.createDishFromDto(dishDto);
+  @PostMapping("create")
+  public ResponseEntity<Dish> createDish(@RequestBody Dish newDish) {
+    Dish savedDish = dishService.createDish(newDish);
     return new ResponseEntity<>(savedDish, HttpStatus.CREATED);
   }
 
   //Dish research by id
   @GetMapping("{id}")
-  public ResponseEntity<DishDto> getDishDtoById(@PathVariable("id") Long dishId) {
-    DishDto dishFound = dishService.getDishDtoById(dishId);
+  public ResponseEntity<Dish> getDish(@PathVariable("id") Long dishId) {
+    Dish dishFound = dishService.getDishById(dishId);
       return ResponseEntity.ok(dishFound);
   }
 
   //dish all research
   @GetMapping
-  public ResponseEntity<List<DishDto>> getAllDishesDto() {
-    var allDishesDto = dishService.getAllDishesDto();
+  public ResponseEntity<List<Dish>> getAllDishes() {
+    var allDishesDto = dishService.getAllDishes();
     return ResponseEntity.ok(allDishesDto);
   }
   
   //update dish
-  @PutMapping("{id}")
-  public ResponseEntity<DishDto> updateDish(@PathVariable("id") Long dishId, @RequestBody DishDto updatedDishDto) {
-    DishDto dishToUpdate = dishService.updateDishFromDto(dishId, updatedDishDto);
+  @PutMapping("{id}/update")
+  public ResponseEntity<Dish> updateDish(@PathVariable("id") Long dishId, @RequestBody Dish updatedDish) {
+    Dish dishToUpdate = dishService.updateDish(dishId, updatedDish);
     return ResponseEntity.ok(dishToUpdate);
   }
 
   //delete dish
-  @DeleteMapping("{id}")
+  @DeleteMapping("{id}/delete")
   public ResponseEntity<String> deleteDish(@PathVariable("id") Long dishId) {
     dishService.deleteDish(dishId);
     return ResponseEntity.ok("Plat supprimé avec succès"); 

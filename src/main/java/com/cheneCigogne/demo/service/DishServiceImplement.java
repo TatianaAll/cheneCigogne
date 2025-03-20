@@ -1,16 +1,13 @@
 package com.cheneCigogne.demo.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.cheneCigogne.demo.dto.DishDto;
 import com.cheneCigogne.demo.entity.Dish;
 import com.cheneCigogne.demo.exception.NotFoundException;
 import com.cheneCigogne.demo.repository.DishRepository;
 import com.cheneCigogne.demo.service.serviceInterface.DishService;
-import com.cheneCigogne.mapper.DishMapper;
 
 import lombok.AllArgsConstructor;
 
@@ -20,29 +17,23 @@ public class DishServiceImplement implements DishService {
   private DishRepository dishRepository;
 
   @Override
-  public DishDto createDishFromDto(DishDto dishDto) {
-    Dish dish = DishMapper.mapToDish(dishDto);
-    Dish savedDish = dishRepository.save(dish);
-    return DishMapper.mapToDishDto(savedDish);
+  public Dish createDish(Dish newDish) {
+    return dishRepository.save(newDish);
   }
 
   @Override
-  public DishDto getDishDtoById(Long dishId) {
-    Dish foundDish = dishRepository.findById(dishId)
+  public Dish getDishById(Long dishId) {
+    return dishRepository.findById(dishId)
         .orElseThrow(() -> new NotFoundException("Le plat recherché n'existe pas"));
-    return DishMapper.mapToDishDto(foundDish);
   }
 
   @Override
-  public List<DishDto> getAllDishesDto() {
-    List<Dish> foundDishes = dishRepository.findAll();
-    return foundDishes.stream()
-      .map((dish) -> DishMapper.mapToDishDto(dish))
-      .collect(Collectors.toList());
+  public List<Dish> getAllDishes() {
+    return dishRepository.findAll();
   }
 
   @Override
-  public DishDto updateDishFromDto(Long dishId, DishDto updatedDish) {
+  public Dish updateDish(Long dishId, Dish updatedDish) {
     Dish dishToUpdate = dishRepository.findById(dishId) 
       .orElseThrow(() -> new NotFoundException("Impossible de modifier un plat inexistant"));
     
@@ -50,8 +41,7 @@ public class DishServiceImplement implements DishService {
       dishToUpdate.setDescription(updatedDish.getDescription());
       dishToUpdate.setPrice(updatedDish.getPrice());
 
-      Dish updatedDishObject = dishRepository.save(dishToUpdate);
-      return DishMapper.mapToDishDto(updatedDishObject);
+      return dishRepository.save(dishToUpdate);
   }
 
   @Override
