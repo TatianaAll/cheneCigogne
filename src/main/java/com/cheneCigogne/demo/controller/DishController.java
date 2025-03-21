@@ -42,7 +42,7 @@ public class DishController {
   }
 
   //dish all research
-  @GetMapping
+  @GetMapping("all")
   public ResponseEntity<List<Dish>> getAllDishes() {
     var allDishesDto = dishService.getAllDishes();
     return ResponseEntity.ok(allDishesDto);

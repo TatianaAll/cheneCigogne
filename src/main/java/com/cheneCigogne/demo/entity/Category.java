@@ -2,6 +2,7 @@ package com.cheneCigogne.demo.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -31,6 +32,8 @@ public class Category {
   private String name;
 
   @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+  @JsonIgnoreProperties("category") 
+  //Annotation that can be used to either suppress serialization of properties (during serialization), or ignore processing of JSON properties read (during deserialization). 
   private List<Dish> dishes;
 
 }

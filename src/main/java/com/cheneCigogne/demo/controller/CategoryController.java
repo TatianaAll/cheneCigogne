@@ -15,8 +15,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
@@ -26,7 +28,7 @@ public class CategoryController {
 
   private CategoryService categoryService;
 
-  @PostMapping
+  @PostMapping("create")
   public ResponseEntity<CategoryDto> createNewCategory(@RequestBody CategoryDto newCategory) {
     categoryService.createCategory(newCategory);
     return new ResponseEntity<>(newCategory, HttpStatus.CREATED);
@@ -49,6 +51,17 @@ public class CategoryController {
     var allCategories = categoryService.getAllCategories();
     return ResponseEntity.ok(allCategories);
   }
+
+  @PutMapping("{id}/update")
+  public ResponseEntity<CategoryDto> updateCategory(@PathVariable("id") Long categoryId, CategoryDto category) {
+  CategoryDto updatedCategory = categoryService.updateCategory(categoryId, category);
+    return ResponseEntity.ok(updatedCategory);  
+  }
   
+  @DeleteMapping("{id}/delete")
+  public ResponseEntity<String> deleteCategory(@PathVariable("id") Long categoryId) {
+    categoryService.deleteCategory(categoryId);
+    return ResponseEntity.ok("Catégorie supprimée");
+  }
 
 }
