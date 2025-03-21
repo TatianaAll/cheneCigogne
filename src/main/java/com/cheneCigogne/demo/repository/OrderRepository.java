@@ -2,8 +2,8 @@ package com.cheneCigogne.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.cheneCigogne.demo.entity.Order;
+import com.cheneCigogne.demo.entity.RestaurantOrder;
 
-public interface OrderRepository extends JpaRepository<Order, Long>{
+public interface OrderRepository extends JpaRepository<RestaurantOrder, Long>{
 
 }

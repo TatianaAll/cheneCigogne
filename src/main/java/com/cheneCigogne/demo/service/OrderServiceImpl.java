@@ -2,7 +2,7 @@ package com.cheneCigogne.demo.service;
 
 import org.springframework.stereotype.Service;
 
-import com.cheneCigogne.demo.entity.Order;
+import com.cheneCigogne.demo.entity.RestaurantOrder;
 import com.cheneCigogne.demo.exception.NotFoundException;
 import com.cheneCigogne.demo.repository.OrderRepository;
 import com.cheneCigogne.demo.service.serviceInterface.OrderService;
@@ -15,21 +15,21 @@ public class OrderServiceImpl implements OrderService {
   private OrderRepository orderRepository;
 
   @Override
-  public Order createOrder(Order newOrder) {
-    Order savedOrder = orderRepository.save(newOrder);
+  public RestaurantOrder createOrder(RestaurantOrder newOrder) {
+    RestaurantOrder savedOrder = orderRepository.save(newOrder);
     return savedOrder;
   }
 
   @Override
-  public Order getOrder(Long orderId) {
-    Order foundOrder = orderRepository.findById(orderId)
+  public RestaurantOrder getOrder(Long orderId) {
+    RestaurantOrder foundOrder = orderRepository.findById(orderId)
       .orElseThrow(()->new NotFoundException("La commande n'a pas été trouvée"));
     return foundOrder;
   }
 
   @Override
-  public Order updateOrder(Order updatedOrder, Long orderId) {
-    Order foundOrder = orderRepository.findById(orderId)
+  public RestaurantOrder updateOrder(RestaurantOrder updatedOrder, Long orderId) {
+    RestaurantOrder foundOrder = orderRepository.findById(orderId)
       .orElseThrow(()->new NotFoundException("La commande n'a pas été trouvée"));
     foundOrder.setStatus(updatedOrder.getStatus());
     foundOrder.setTable(updatedOrder.getTable());
@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
 
   @Override
   public void deleteOrder(Long orderId) {
-    Order foundOrder = orderRepository.findById(orderId)
+    RestaurantOrder foundOrder = orderRepository.findById(orderId)
     .orElseThrow(()->new NotFoundException("La commande n'a pas été trouvée"));
     orderRepository.delete(foundOrder);
   }

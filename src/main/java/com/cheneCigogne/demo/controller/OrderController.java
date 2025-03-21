@@ -3,7 +3,7 @@ package com.cheneCigogne.demo.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cheneCigogne.demo.entity.Order;
+import com.cheneCigogne.demo.entity.RestaurantOrder;
 import com.cheneCigogne.demo.service.serviceInterface.OrderService;
 
 import lombok.AllArgsConstructor;
@@ -24,14 +24,14 @@ public class OrderController {
   private OrderService orderService;
 
   @PostMapping("/create")
-  public ResponseEntity<Order> createOrder(@RequestBody Order newOrder) {
-      Order savedOrder = orderService.createOrder(newOrder);
+  public ResponseEntity<RestaurantOrder> createOrder(@RequestBody RestaurantOrder newOrder) {
+      RestaurantOrder savedOrder = orderService.createOrder(newOrder);
       return new ResponseEntity<>(savedOrder, HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Order> getOrder(@PathVariable("id") Long orderId) {
-    Order foundOrder = orderService.getOrder(orderId);
+  public ResponseEntity<RestaurantOrder> getOrder(@PathVariable("id") Long orderId) {
+    RestaurantOrder foundOrder = orderService.getOrder(orderId);
     return ResponseEntity.ok(foundOrder);
   }
   

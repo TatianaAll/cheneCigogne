@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cheneCigogne.demo.entity.RestaurantTable;
 
-public interface RestaurantTableRepository extends JpaRepository<RestaurantTable, Long> {
+public interface TableRepository extends JpaRepository<RestaurantTable, Long> {
 
 }

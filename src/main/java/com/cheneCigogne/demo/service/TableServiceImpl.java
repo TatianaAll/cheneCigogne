@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.cheneCigogne.demo.dto.RestaurantTableDto;
 import com.cheneCigogne.demo.entity.RestaurantTable;
 import com.cheneCigogne.demo.exception.NotFoundException;
-import com.cheneCigogne.demo.repository.RestaurantTableRepository;
+import com.cheneCigogne.demo.repository.TableRepository;
 import com.cheneCigogne.demo.service.serviceInterface.TableService;
 import com.cheneCigogne.mapper.TableMapper;
 
@@ -18,7 +18,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class TableServiceImpl implements TableService {
 
-  private RestaurantTableRepository tableRepository;
+  private TableRepository tableRepository;
 
   @Override
   public RestaurantTableDto createTable(RestaurantTableDto tableDto) {
