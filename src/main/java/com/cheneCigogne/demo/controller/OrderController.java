@@ -12,8 +12,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 
@@ -33,6 +36,18 @@ public class OrderController {
   public ResponseEntity<RestaurantOrder> getOrder(@PathVariable("id") Long orderId) {
     RestaurantOrder foundOrder = orderService.getOrder(orderId);
     return ResponseEntity.ok(foundOrder);
+  }
+
+  @PutMapping("{id}/update")
+  public ResponseEntity<RestaurantOrder> updateOrder(@PathVariable("id") Long orderId, RestaurantOrder orderUpdated) {
+    RestaurantOrder orderToUpdate = orderService.updateOrder(orderUpdated, orderId);
+    return ResponseEntity.ok(orderToUpdate);
+  }
+
+  @DeleteMapping("{id}/delete")
+  public ResponseEntity<String> deleteOrder(@PathVariable("id") Long orderId) {
+    orderService.deleteOrder(orderId);
+    return ResponseEntity.ok("Commande supprimée avec succès");
   }
   
   
